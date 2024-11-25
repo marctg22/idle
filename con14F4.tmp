@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://duox8wyayu5u6"]
+
+[ext_resource type="Script" path="res://BarraEnergia.gd" id="1_kkw8g"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -598.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kkw8g")
+
+[node name="Timer_BarraEnergia" type="Timer" parent="Control"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="ProgressBar_BarraEnergia" type="ProgressBar" parent="Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+show_percentage = false
+
+[node name="Label_BarraEnergia" type="Label" parent="Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "######"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Control/Timer_BarraEnergia" to="Control" method="_on_timer_timeout"]
